@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, Image } from "react";
 import { useDropzone } from "react-dropzone";
 import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
@@ -24,33 +24,48 @@ const ImageUploader = ({ viewportHeight }) => {
 
   return (
     <div>
-      <div style={{ height: `${viewportHeight}px` }}>
-        <Camera
-          isFullscreen
-          idealFacingMode="environment"
-          onTakePhoto={(dataUri) => {
-            setImage(dataUri);
-          }}
-        />
-      </div>
+      {!image && (
+        <div>
+          <div style={{ height: `${viewportHeight}px` }}>
+            <Camera
+              isFullscreen
+              isMaxResolution
+              idealFacingMode="environment"
+              onTakePhoto={(dataUri) => {
+                setImage(dataUri);
+              }}
+            />
+          </div>
 
-      {/* <div
-        {...getRootProps()}
-        className="border-2 border-dashed border-['#ccc'] rounded-['4px'] p-5 text-center pointer"
-      >
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop an image here, or click to select one</p>
-      </div> */}
+          <div {...getRootProps()} className="absolute bottom-6 left-6">
+            <input {...getInputProps()} />
+            <img
+              className="bg-[hsla(0,0%,100%,.4)] w-14 h-14 p-2.5 rounded-full"
+              src="photo-library-icon.svg"
+              alt="Photo library"
+            />
+          </div>
+        </div>
+      )}
 
-      {/* <div className="mt-5">
-        {image && (
+      {image && (
+        <div>
           <img
+            style={{ height: `${viewportHeight}px` }}
+            className="w-screen"
             src={image}
-            alt="Uploaded"
-            style={{ maxWidth: "100%", maxHeight: "200px" }}
+            alt="Taken image"
           />
-        )}
-      </div> */}
+
+          <button className="absolute bottom-6 right-6">
+            <img
+              className="bg-[hsla(0,0%,100%,.4)] w-14 h-14 p-2.5 rounded-full"
+              src="tick.svg"
+              alt="Submit image"
+            />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
