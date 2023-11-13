@@ -1,0 +1,23 @@
+{
+  "name": "planescanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannyfrelink/planeScanner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannyfrelink/planeScanner/issues"
+  },
+  "homepage": "https://github.com/dannyfrelink/planeScanner#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
