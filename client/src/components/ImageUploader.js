@@ -1,10 +1,11 @@
-import React, { useState, Image } from "react";
+import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
 
 const ImageUploader = ({ viewportHeight }) => {
   const [image, setImage] = useState(null);
+  const [serialNumber, setSerialNumber] = useState("");
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -21,6 +22,20 @@ const ImageUploader = ({ viewportHeight }) => {
     onDrop,
     accept: "image/*",
   });
+
+  const handleSubmitImage = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const data = await fetch("/plane/find", {
+      method: "POST",
+      body: formData,
+    }).then((res) => res.json());
+
+    setSerialNumber(data.serialNumber);
+  };
 
   return (
     <div>
@@ -42,30 +57,35 @@ const ImageUploader = ({ viewportHeight }) => {
             <img
               className="bg-[hsla(0,0%,100%,.4)] w-14 h-14 p-2.5 rounded-full"
               src="photo-library-icon.svg"
-              alt="Photo library"
+              alt="Library"
             />
           </div>
         </div>
       )}
 
-      {image && (
-        <div>
+      {image && !serialNumber && (
+        <form
+          onSubmit={(e) => handleSubmitImage(e)}
+          encType="multipart/form-data"
+        >
           <img
             style={{ height: `${viewportHeight}px` }}
             className="w-screen"
             src={image}
-            alt="Taken image"
+            alt="Taken"
           />
 
           <button className="absolute bottom-6 right-6">
             <img
               className="bg-[hsla(0,0%,100%,.4)] w-14 h-14 p-2.5 rounded-full"
               src="tick.svg"
-              alt="Submit image"
+              alt="Submit"
             />
           </button>
-        </div>
+        </form>
       )}
+
+      {serialNumber && <div>{serialNumber}</div>}
     </div>
   );
 };
