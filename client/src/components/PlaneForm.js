@@ -47,7 +47,7 @@ const PlaneForm = () => {
 
         setFormData((prevData) => ({
           ...prevData,
-          serialNumber: data.serialNumber,
+          serialNumber: data.serialNumber.toUpperCase(),
         }));
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -74,10 +74,22 @@ const PlaneForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.serialNumber == "") {
+    if (formData.serialNumber === "") {
       setEmptyImage(true);
       return;
     }
+
+    await fetch(
+      `http://localhost:3001/plane/find?data=${JSON.stringify(formData)}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then(({ aircraft }) => console.log("Data gathered: ", aircraft));
 
     // console.log("Form submitted:", formData);
   };

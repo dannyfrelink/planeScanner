@@ -1,0 +1,304 @@
+{
+    "aircrafts": [
+        {
+          "aircraftModel": "B77W",
+          "airline": "KLM",
+          "origin": "Dutch",
+          "serialNumber": "UJHVFI9PMH"
+        },
+        {
+          "aircraftModel": "A321",
+          "airline": "Transavia",
+          "origin": "Dutch",
+          "serialNumber": "4J2ZDBVS35"
+        },
+        {
+          "aircraftModel": "A333",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "PUDJ3V837D"
+        },
+        {
+          "aircraftModel": "A332",
+          "airline": "KLM",
+          "origin": "Dutch",
+          "serialNumber": "LIIBHABQNU"
+        },
+        {
+          "aircraftModel": "A333",
+          "airline": "Bangkok Airways",
+          "origin": "Thai",
+          "serialNumber": "S1MPMNPZPY"
+        },
+        {
+          "aircraftModel": "B737",
+          "airline": "Etihad Airways",
+          "origin": "UAE",
+          "serialNumber": "7TSBWI8W9W"
+        },
+        {
+          "aircraftModel": "A333",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "6OJGI9C0IZ"
+        },
+        {
+          "aircraftModel": "A333",
+          "airline": "KLM",
+          "origin": "Dutch",
+          "serialNumber": "YY5H69TFAJ"
+        },
+        {
+          "aircraftModel": "A320",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "8TFKPFLO8Y"
+        },
+        {
+          "aircraftModel": "B737",
+          "airline": "Etihad Airways",
+          "origin": "UAE",
+          "serialNumber": "IK3QYD0VZ1"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "China Southern",
+          "origin": "Chinese",
+          "serialNumber": "LX4MGDM33P"
+        },
+        {
+          "aircraftModel": "A320",
+          "airline": "Bangkok Airways",
+          "origin": "Thai",
+          "serialNumber": "2GOOCPX0NP"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "T8L8IIKI9F"
+        },
+        {
+          "aircraftModel": "B737",
+          "airline": "Malaysia Airlines",
+          "origin": "Malaysian",
+          "serialNumber": "TY5T5XAZV2"
+        },
+        {
+          "aircraftModel": "A320",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "Q8WIPFQ6P1"
+        },
+        {
+          "aircraftModel": "A332",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "I7Q0OYXHHM"
+        },
+        {
+          "aircraftModel": "B737",
+          "airline": "AirFrance",
+          "origin": "French",
+          "serialNumber": "J7BCHO5VZZ"
+        },
+        {
+          "aircraftModel": "A319",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "OLOBLYHXF7"
+        },
+        {
+          "aircraftModel": "A319",
+          "airline": "China Southern",
+          "origin": "Chinese",
+          "serialNumber": "8BLD3Q202X"
+        },
+        {
+          "aircraftModel": "B77W",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "DF8CINKMME"
+        },
+        {
+          "aircraftModel": "B737",
+          "airline": "KLM",
+          "origin": "Dutch",
+          "serialNumber": "LPJ40JWYP4"
+        },
+        {
+          "aircraftModel": "A319",
+          "airline": "Etihad Airways",
+          "origin": "UAE",
+          "serialNumber": "5EGSDC1LNO"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "U8M5GQ0KLN"
+        },
+        {
+          "aircraftModel": "A332",
+          "airline": "Bangkok Airways",
+          "origin": "Thai",
+          "serialNumber": "WW3M4A117C"
+        },
+        {
+          "aircraftModel": "B77W",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "HO1HU0BWSX"
+        },
+        {
+          "aircraftModel": "A333",
+          "airline": "Bangkok Airways",
+          "origin": "Thai",
+          "serialNumber": "NRX5EJAR6K"
+        },
+        {
+          "aircraftModel": "A320",
+          "airline": "Etihad Airways",
+          "origin": "UAE",
+          "serialNumber": "K7M2FPA9QM"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "ER0UOSYRKJ"
+        },
+        {
+          "aircraftModel": "A321",
+          "airline": "Malaysia Airlines",
+          "origin": "Malaysian",
+          "serialNumber": "OJWFGHHJCU"
+        },
+        {
+          "aircraftModel": "B77W",
+          "airline": "Malaysia Airlines",
+          "origin": "Malaysian",
+          "serialNumber": "LPKENR1TOK"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Bangkok Airways",
+          "origin": "Thai",
+          "serialNumber": "GQ4LHAJH6B"
+        },
+        {
+          "aircraftModel": "A333",
+          "airline": "Bulgaria Air",
+          "origin": "Bulgarian",
+          "serialNumber": "0UYTTBKVEU"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Bangkok Airways",
+          "origin": "Thai",
+          "serialNumber": "GY1WNRPOX8"
+        },
+        {
+          "aircraftModel": "A321",
+          "airline": "KLM",
+          "origin": "Dutch",
+          "serialNumber": "X4CG0PWPPK"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Transavia",
+          "origin": "Dutch",
+          "serialNumber": "1X05K13M2G"
+        },
+        {
+          "aircraftModel": "A321",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "SKRDQJFSR9"
+        },
+        {
+          "aircraftModel": "A319",
+          "airline": "China Southern",
+          "origin": "Chinese",
+          "serialNumber": "IMWXJNEJR7"
+        },
+        {
+          "aircraftModel": "A321",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "AXJQ8VJMRH"
+        },
+        {
+          "aircraftModel": "B77W",
+          "airline": "Transavia",
+          "origin": "Dutch",
+          "serialNumber": "NGUEU2IXWV"
+        },
+        {
+          "aircraftModel": "B77W",
+          "airline": "Bangkok Airways",
+          "origin": "Thai",
+          "serialNumber": "7Z1IFO77NJ"
+        },
+        {
+          "aircraftModel": "A333",
+          "airline": "Transavia",
+          "origin": "Dutch",
+          "serialNumber": "O2A5GPQIAA"
+        },
+        {
+          "aircraftModel": "A320",
+          "airline": "China Southern",
+          "origin": "Chinese",
+          "serialNumber": "E0LFDZDWS2"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "AirFrance",
+          "origin": "French",
+          "serialNumber": "60BFEJY8IV"
+        },
+        {
+          "aircraftModel": "A321",
+          "airline": "Malaysia Airlines",
+          "origin": "Malaysian",
+          "serialNumber": "DVIZ01HMNV"
+        },
+        {
+          "aircraftModel": "A320",
+          "airline": "AirFrance",
+          "origin": "French",
+          "serialNumber": "07SSZ2H7AP"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "ZGRBIUZ3U0"
+        },
+        {
+          "aircraftModel": "A319",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "471EZXZ8VJ"
+        },
+        {
+          "aircraftModel": "A319",
+          "airline": "Etihad Airways",
+          "origin": "UAE",
+          "serialNumber": "RBR5J3NE6W"
+        },
+        {
+          "aircraftModel": "A319",
+          "airline": "Etihad Airways",
+          "origin": "UAE",
+          "serialNumber": "AU48OIETE2"
+        },
+        {
+          "aircraftModel": "B738",
+          "airline": "Sichuan Airlines",
+          "origin": "Chinese",
+          "serialNumber": "CHJ7ZJ66XH"
+        }
+      ]
+}
