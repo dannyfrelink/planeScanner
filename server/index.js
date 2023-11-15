@@ -1,11 +1,18 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 const multer = require("multer");
 const Tesseract = require("tesseract.js");
+const cors = require("cors");
 const port = 3001;
 
+app.use(cors());
+app.use(bodyParser.json());
+
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+});
 
 const extractSerialNumber = (data) => {
   // Split the string into an array of words
@@ -23,11 +30,11 @@ const extractSerialNumber = (data) => {
   return words.splice(longestWordIndex, 1)[0];
 };
 
-app.get("/", (req, res) => {
+app.get("/plane/find", (req, res) => {
   res.send("Welcome");
 });
 
-app.post("/plane/find", upload.single("image"), async (req, res) => {
+app.post("/plane/number", upload.single("image"), async (req, res) => {
   try {
     const { data } = await Tesseract.recognize(req.body.image, "eng");
     const serialNumber = extractSerialNumber(data);
