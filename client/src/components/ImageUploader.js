@@ -55,7 +55,7 @@ const ImageUploader = ({ viewportHeight }) => {
           <div {...getRootProps()} className="absolute bottom-6 left-6">
             <input {...getInputProps()} />
             <img
-              className="bg-[hsla(0,0%,100%,.4)] w-14 h-14 p-2.5 rounded-full"
+              className="bg-[hsla(200,33%,56%,.6)] w-14 h-14 p-2.5 rounded-full"
               src="photo-library-icon.svg"
               alt="Library"
             />
@@ -77,7 +77,7 @@ const ImageUploader = ({ viewportHeight }) => {
 
           <button className="absolute bottom-6 right-6">
             <img
-              className="bg-[hsla(0,0%,100%,.4)] w-14 h-14 p-2.5 rounded-full"
+              className="bg-[hsla(200,33%,56%,.6)] w-14 h-14 p-2.5 rounded-full"
               src="tick.svg"
               alt="Submit"
             />
