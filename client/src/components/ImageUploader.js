@@ -23,6 +23,11 @@ const ImageUploader = ({ viewportHeight }) => {
     accept: "image/*",
   });
 
+  //   const handleCancelImage = (e) => {
+  //     e.preventDefault();
+  //     setImage(null);
+  //   };
+
   const handleSubmitImage = async (e) => {
     e.preventDefault();
 
@@ -68,6 +73,16 @@ const ImageUploader = ({ viewportHeight }) => {
           onSubmit={(e) => handleSubmitImage(e)}
           encType="multipart/form-data"
         >
+          {/* <button
+            onClick={(e) => handleCancelImage(e)}
+            className="absolute top-6 left-6"
+          >
+            <img
+              className="bg-[hsla(200,33%,56%,.6)] w-14 h-14 p-3 rounded-full"
+              src="cancel.svg"
+              alt="Cancel"
+            />
+          </button> */}
           <img
             style={{ height: `${viewportHeight}px` }}
             className="w-screen"
@@ -77,7 +92,7 @@ const ImageUploader = ({ viewportHeight }) => {
 
           <button className="absolute bottom-6 right-6">
             <img
-              className="bg-[hsla(200,33%,56%,.6)] w-14 h-14 p-2.5 rounded-full"
+              className="bg-[hsla(200,33%,56%,.6)] w-14 h-14 p-2 rounded-full"
               src="tick.svg"
               alt="Submit"
             />
