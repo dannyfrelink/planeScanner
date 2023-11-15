@@ -1,28 +1,13 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import ImageUploader from "./components/ImageUploader";
+import PlaneForm from "./components/PlaneForm";
 
 function App() {
-  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
-
-  useEffect(() => {
-    const handleResize = () => {
-      // Update the viewport height when the window is resized
-      setViewportHeight(window.innerHeight);
-    };
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
-    <div style={{ height: `${viewportHeight}px` }}>
-      <ImageUploader viewportHeight={viewportHeight} />
+    <div className="w-11/12 mx-auto">
+      <h1 className="font-semibold text-2xl mt-10 mb-5 text-[#00A1DE]">
+        Search for Aircraft
+      </h1>
+      <PlaneForm />
     </div>
   );
 }
