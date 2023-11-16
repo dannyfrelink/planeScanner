@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
 
 const PlaneForm = ({
   handleSubmit,
@@ -8,13 +7,12 @@ const PlaneForm = ({
   emptyImage,
   setEmptyImage,
 }) => {
-  // State to manage form input values
   const [image, setImage] = useState(null);
   const [loader, setLoader] = useState(false);
   const [wrongImage, setWrongImage] = useState(false);
 
-  const onDrop = (acceptedFiles) => {
-    const file = acceptedFiles[0];
+  const onDrop = (e) => {
+    const file = e.target.files[0];
     setLoader(true);
 
     if (file && file.type.startsWith("image/")) {
@@ -30,13 +28,14 @@ const PlaneForm = ({
       reader.readAsDataURL(file);
     } else {
       setWrongImage(true);
+      setLoader(false);
     }
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetch("http://localhost:3001/plane/number", {
+        const data = await fetch("http://192.168.178.248:3001/plane/number", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -59,11 +58,6 @@ const PlaneForm = ({
   useEffect(() => {
     setLoader(false);
   }, [formData.serialNumber]);
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: "image/*",
-  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -127,14 +121,21 @@ const PlaneForm = ({
         />
       </div>
 
-      <div className="flex-row items-center" {...getRootProps()}>
+      <div className="flex-row items-center">
         <label
           htmlFor="serialNumber"
-          className="border-[1.5px] border-[#00A1DE] border-dashed p-1.5 rounded w-fit mt-1"
+          className="border-[1.5px] border-[#00A1DE] border-dashed p-1.5 rounded w-fit mt-1 cursor-pointer"
         >
           Serial Number Image
         </label>
-        <input {...getInputProps()} id="serialNumber" name="serialNumber" />
+        <input
+          className="hidden"
+          type="file"
+          onInput={onDrop}
+          id="serialNumber"
+          name="serialNumber"
+          accept="image/*"
+        />
         {emptyImage && <p className="text-red-600 ml-2">Please add image</p>}
         {wrongImage && <p className="text-red-600 ml-2">Not an image</p>}
         {loader && <p className="text-[#00A1E4] ml-2">Loading ...</p>}

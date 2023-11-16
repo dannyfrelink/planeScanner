@@ -21,7 +21,7 @@ function App() {
     }
 
     await fetch(
-      `http://localhost:3001/plane/find?data=${JSON.stringify(formData)}`,
+      `http://192.168.178.248:3001/plane/find?data=${JSON.stringify(formData)}`,
       {
         method: "GET",
         headers: {
