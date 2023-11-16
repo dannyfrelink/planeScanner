@@ -74,8 +74,8 @@ app.get("/plane/find", (req, res) => {
       const matchingAircrafts = aircrafts.filter(
         (aircraft) =>
           aircraft.aircraftModel === aircraftModel &&
-          aircraft.airline === airline &&
-          aircraft.origin === origin
+          aircraft.airline.toLowerCase().includes(airline.toLowerCase()) &&
+          aircraft.origin.toLowerCase().includes(origin.toLowerCase())
       );
 
       filteredAircraft = matchingAircrafts.reduce((closest, current) => {
