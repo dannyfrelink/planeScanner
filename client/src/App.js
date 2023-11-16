@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="w-11/12 mx-auto">
-      <h1 className="font-semibold text-2xl mt-10 mb-5 text-[#00A1DE]">
+      <h1 className="font-semibold text-2xl mt-12 mb-7 text-[#00A1DE]">
         {!aircraft ? "Search for Aircraft" : "Matching Aircraft"}
       </h1>
       {!aircraft ? (
