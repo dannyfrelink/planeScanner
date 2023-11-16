@@ -55,8 +55,11 @@ const PlaneForm = () => {
     };
 
     image !== null && fetchData();
-    setLoader(false);
   }, [image]);
+
+  useEffect(() => {
+    setLoader(false);
+  }, [formData.serialNumber]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -90,8 +93,6 @@ const PlaneForm = () => {
     )
       .then((res) => res.json())
       .then(({ aircraft }) => console.log("Data gathered: ", aircraft));
-
-    // console.log("Form submitted:", formData);
   };
 
   return (
@@ -159,6 +160,9 @@ const PlaneForm = () => {
         {emptyImage && <p className="text-red-600 ml-2">Please add image</p>}
         {wrongImage && <p className="text-red-600 ml-2">Not an image</p>}
         {loader && <p className="text-[#00A1E4] ml-2">Loading ...</p>}
+        {formData.serialNumber && (
+          <img src="tick.svg" alt="Uploaded" className="ml-2 w-8" />
+        )}
       </div>
 
       <button
