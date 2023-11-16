@@ -1,7 +1,7 @@
 const Select = ({ formData, handleChange }) => {
   return (
     <div>
-      <label htmlFor="model">Aircraft Model:</label>
+      <label htmlFor="model">Aircraft Model*</label>
       <select
         className="w-fit"
         id="aircraftModel"

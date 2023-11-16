@@ -1,7 +1,7 @@
 const InputText = ({ label, value, handleChange }) => {
   return (
     <div>
-      <label htmlFor={label.toLowerCase()}>{label}:</label>
+      <label htmlFor={label.toLowerCase()}>{label}*</label>
       <input
         className="w-3/4"
         type="text"

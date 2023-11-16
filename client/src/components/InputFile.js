@@ -11,7 +11,7 @@ const InputFile = ({
         htmlFor="serialNumber"
         className="border-[1.5px] border-[#00A1DE] border-dashed p-1.5 rounded w-fit mt-1 cursor-pointer"
       >
-        Serial Number Image
+        Serial Number Image*
       </label>
       <input
         className="hidden"
