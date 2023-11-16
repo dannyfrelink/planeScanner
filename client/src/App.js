@@ -1,9 +1,15 @@
 import { useState } from "react";
 import "./App.css";
 import PlaneForm from "./components/PlaneForm";
+import PlaneDetails from "./components/PlaneDetails";
 
 function App() {
-  const [aircraft, setAircraft] = useState(null);
+  const [aircraft, setAircraft] = useState({
+    aircraftModel: "A319",
+    airline: "KLM",
+    origin: "Dutch",
+    serialNumber: "SLDIE434D4",
+  });
   const [emptyImage, setEmptyImage] = useState(false);
   const [formData, setFormData] = useState({
     aircraftModel: "A319",
@@ -47,7 +53,7 @@ function App() {
           setEmptyImage={setEmptyImage}
         />
       ) : (
-        <div>{aircraft.aircraftModel}</div>
+        <PlaneDetails aircraft={aircraft} />
       )}
     </div>
   );
