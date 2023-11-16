@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import PlaneForm from "./components/PlaneForm";
 import PlaneDetails from "./components/PlaneDetails";
@@ -12,6 +12,7 @@ function App() {
     origin: "",
     serialNumber: "",
   });
+  const [newScan, setNewScan] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +35,15 @@ function App() {
       .then(({ aircraft }) => setAircraft(aircraft));
   };
 
+  useEffect(() => {
+    setFormData({
+      aircraftModel: "A319",
+      airline: "",
+      origin: "",
+      serialNumber: "",
+    });
+  }, [newScan]);
+
   return (
     <div className="w-11/12 mx-auto">
       <h1 className="font-semibold text-2xl mt-12 mb-7 text-[#00A1DE]">
@@ -48,7 +58,11 @@ function App() {
           setEmptyImage={setEmptyImage}
         />
       ) : (
-        <PlaneDetails aircraft={aircraft} setAircraft={setAircraft} />
+        <PlaneDetails
+          aircraft={aircraft}
+          setAircraft={setAircraft}
+          setNewScan={setNewScan}
+        />
       )}
     </div>
   );
