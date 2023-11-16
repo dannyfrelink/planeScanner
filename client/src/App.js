@@ -4,12 +4,7 @@ import PlaneForm from "./components/PlaneForm";
 import PlaneDetails from "./components/PlaneDetails";
 
 function App() {
-  const [aircraft, setAircraft] = useState({
-    aircraftModel: "A319",
-    airline: "KLM",
-    origin: "Dutch",
-    serialNumber: "SLDIE434D4",
-  });
+  const [aircraft, setAircraft] = useState(null);
   const [emptyImage, setEmptyImage] = useState(false);
   const [formData, setFormData] = useState({
     aircraftModel: "A319",
@@ -53,7 +48,7 @@ function App() {
           setEmptyImage={setEmptyImage}
         />
       ) : (
-        <PlaneDetails aircraft={aircraft} />
+        <PlaneDetails aircraft={aircraft} setAircraft={setAircraft} />
       )}
     </div>
   );
