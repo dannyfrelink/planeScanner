@@ -24,7 +24,7 @@ const InputFile = ({
       {emptyImage && <p className="text-red-600 ml-2">Please add image</p>}
       {wrongImage && <p className="text-red-600 ml-2">Not an image</p>}
       {loader && <p className="text-[#00A1E4] ml-2">Loading ...</p>}
-      {serialNumber && (
+      {serialNumber && !loader && (
         <img src="icons/tick.svg" alt="Uploaded" className="ml-2 w-8" />
       )}
     </div>

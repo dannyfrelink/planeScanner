@@ -12,10 +12,12 @@ function App() {
     origin: "",
     serialNumber: "",
   });
+  const [wrongSearch, setWrongSearch] = useState(false);
   const [newScan, setNewScan] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setWrongSearch(false);
 
     if (formData.serialNumber === "") {
       setEmptyImage(true);
@@ -33,9 +35,14 @@ function App() {
     )
       .then((res) => res.json())
       .then(({ aircraft }) => setAircraft(aircraft));
+
+    if (aircraft === null) {
+      setWrongSearch(true);
+    }
   };
 
   useEffect(() => {
+    setWrongSearch(false);
     setFormData({
       aircraftModel: "A319",
       airline: "",
@@ -56,6 +63,7 @@ function App() {
           setFormData={setFormData}
           emptyImage={emptyImage}
           setEmptyImage={setEmptyImage}
+          wrongSearch={wrongSearch}
         />
       ) : (
         <PlaneDetails

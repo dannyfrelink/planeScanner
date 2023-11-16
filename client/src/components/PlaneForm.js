@@ -9,6 +9,7 @@ const PlaneForm = ({
   setFormData,
   emptyImage,
   setEmptyImage,
+  wrongSearch,
 }) => {
   const [image, setImage] = useState(null);
   const [loader, setLoader] = useState(false);
@@ -104,6 +105,12 @@ const PlaneForm = ({
       >
         Search Aircraft
       </button>
+
+      {wrongSearch && (
+        <p className="text-red-600 mt-3">
+          There is no matching result, please try again.
+        </p>
+      )}
     </form>
   );
 };
