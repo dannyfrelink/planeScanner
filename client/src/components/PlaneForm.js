@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-const PlaneForm = () => {
+const PlaneForm = ({
+  handleSubmit,
+  formData,
+  setFormData,
+  emptyImage,
+  setEmptyImage,
+}) => {
   // State to manage form input values
   const [image, setImage] = useState(null);
   const [loader, setLoader] = useState(false);
-  const [emptyImage, setEmptyImage] = useState(false);
   const [wrongImage, setWrongImage] = useState(false);
-  const [formData, setFormData] = useState({
-    aircraftModel: "A319",
-    airline: "",
-    origin: "",
-    serialNumber: "",
-  });
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -72,27 +71,6 @@ const PlaneForm = () => {
       ...prevData,
       [name]: value,
     }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (formData.serialNumber === "") {
-      setEmptyImage(true);
-      return;
-    }
-
-    await fetch(
-      `http://localhost:3001/plane/find?data=${JSON.stringify(formData)}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then(({ aircraft }) => console.log("Data gathered: ", aircraft));
   };
 
   return (
