@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import Select from "./Select";
+import InputText from "./InputText";
+import InputFile from "./InputFile";
 
 const PlaneForm = ({
   handleSubmit,
@@ -74,75 +77,26 @@ const PlaneForm = ({
       encType="multipart/form-data"
       method="POST"
     >
-      <div>
-        <label htmlFor="model">Aircraft Model:</label>
-        <select
-          className="w-fit"
-          id="aircraftModel"
-          name="aircraftModel"
-          value={formData.aircraftModel}
-          onChange={handleChange}
-          required
-        >
-          <option value="A319">A319</option>
-          <option value="A320">A320</option>
-          <option value="A321">A321</option>
-          <option value="A332">A332</option>
-          <option value="A333">A333</option>
-          <option value="B77W">B77W</option>
-          <option value="B737">B737</option>
-          <option value="B738">B738</option>
-        </select>
-      </div>
+      <Select formData={formData} handleChange={handleChange} />
 
-      <div>
-        <label htmlFor="airline">Airline:</label>
-        <input
-          className="w-3/4"
-          type="text"
-          id="airline"
-          name="airline"
-          value={formData.airline}
-          onChange={handleChange}
-          required
-        />
-      </div>
+      <InputText
+        label="Airline"
+        value={formData.airline}
+        handleChange={handleChange}
+      />
+      <InputText
+        label="Origin"
+        value={formData.origin}
+        handleChange={handleChange}
+      />
 
-      <div>
-        <label htmlFor="origin">Origin:</label>
-        <input
-          className="w-3/4"
-          type="text"
-          id="origin"
-          name="origin"
-          value={formData.origin}
-          onChange={handleChange}
-          required
-        />
-      </div>
-
-      <div className="flex-row items-center">
-        <label
-          htmlFor="serialNumber"
-          className="border-[1.5px] border-[#00A1DE] border-dashed p-1.5 rounded w-fit mt-1 cursor-pointer"
-        >
-          Serial Number Image
-        </label>
-        <input
-          className="hidden"
-          type="file"
-          onInput={onDrop}
-          id="serialNumber"
-          name="serialNumber"
-          accept="image/*"
-        />
-        {emptyImage && <p className="text-red-600 ml-2">Please add image</p>}
-        {wrongImage && <p className="text-red-600 ml-2">Not an image</p>}
-        {loader && <p className="text-[#00A1E4] ml-2">Loading ...</p>}
-        {formData.serialNumber && (
-          <img src="tick.svg" alt="Uploaded" className="ml-2 w-8" />
-        )}
-      </div>
+      <InputFile
+        onDrop={onDrop}
+        emptyImage={emptyImage}
+        wrongImage={wrongImage}
+        loader={loader}
+        serialNumber={formData.serialNumber}
+      />
 
       <button
         type="submit"
