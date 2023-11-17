@@ -99,8 +99,6 @@ app.post("/plane/number", upload.single("image"), async (req, res) => {
         console.error("Error processing image:", error);
         res.status(500).json({ error: "Error processing image" });
       });
-    // const serialNumber = extractSerialNumber(data);
-    // res.json({ serialNumber });
   } catch (error) {
     console.log("Error: ", error);
     res.status(500).json({ error: "Internal Server Error" });
