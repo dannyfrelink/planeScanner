@@ -15,22 +15,6 @@ const upload = multer({
   storage: storage,
 });
 
-const extractSerialNumber = (data) => {
-  // Split the string into an array of words
-  const words = data.text.split(/\s+/);
-
-  // Find the index of the longest word
-  let longestWordIndex = 0;
-  for (let i = 1; i < words.length; i++) {
-    if (words[i].length > words[longestWordIndex].length) {
-      longestWordIndex = i;
-    }
-  }
-
-  // Return the serial number from the array
-  return words.splice(longestWordIndex, 1)[0];
-};
-
 function calculateLevenshteinDistance(a, b) {
   if (a.length === 0) return b.length;
   if (b.length === 0) return a.length;
@@ -101,9 +85,22 @@ app.get("/plane/find", (req, res) => {
 
 app.post("/plane/number", upload.single("image"), async (req, res) => {
   try {
-    const { data } = await Tesseract.recognize(req.body.image, "eng");
-    const serialNumber = extractSerialNumber(data);
-    res.json({ serialNumber });
+    await Tesseract.recognize(req.body.image, "eng")
+      .then(async ({ data: { text } }) => {
+        const serialNumber = text.trim();
+        if (serialNumber.includes(" ")) {
+          const splitSerialNumber = serialNumber.split(" ").join("");
+          res.json({ serialNumber: splitSerialNumber });
+        } else {
+          res.json({ serialNumber });
+        }
+      })
+      .catch((error) => {
+        console.error("Error processing image:", error);
+        res.status(500).json({ error: "Error processing image" });
+      });
+    // const serialNumber = extractSerialNumber(data);
+    // res.json({ serialNumber });
   } catch (error) {
     console.log("Error: ", error);
     res.status(500).json({ error: "Internal Server Error" });
