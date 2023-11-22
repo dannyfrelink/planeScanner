@@ -3,7 +3,6 @@ const CACHE_NAME = "my-react-app-cache";
 const urlsToCache = [
   "/",
   "/index.html",
-  // Add other static assets (CSS, JS, images) that you want to cache
 
   // API URLs
   "http://192.168.178.248:3001/plane/find",
