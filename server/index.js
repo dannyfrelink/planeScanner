@@ -1,11 +1,30 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const Tesseract = require("tesseract.js");
+const Tesseract = require("node-tesseract-ocr");
+// const sharp = require("sharp");
+import { temporaryFile } from "tempy";
+const fs = require("fs");
+// const Tesseract = require("tesseract.js");
 const cors = require("cors");
 const { aircrafts } = require("./aircraftData.json");
 const port = 3001;
+
+// Serve static files from the 'build' directory
+app.use(express.static(path.join(__dirname, "build")));
+
+// Example: Set 'Cache-Control' header for CSS and JS files
+app.use("/static/css", (req, res, next) => {
+  res.setHeader("Cache-Control", "public, max-age=31536000"); // 1 year
+  next();
+});
+
+app.use("/static/js", (req, res, next) => {
+  res.setHeader("Cache-Control", "public, max-age=31536000"); // 1 year
+  next();
+});
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -83,22 +102,66 @@ app.get("/plane/find", (req, res) => {
   }
 });
 
+// app.post("/plane/number", upload.single("image"), async (req, res) => {
+//   try {
+//     const [result] = await client.textDetection(req.body.image);
+//     const serialNumber = result.textAnnotations[0].description.trim();
+
+//     console.log("testing: ", serialNumber);
+
+//     res.json({ serialNumber });
+//   } catch (error) {
+//     console.log("Error: ", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
+
 app.post("/plane/number", upload.single("image"), async (req, res) => {
   try {
-    await Tesseract.recognize(req.body.image, "eng")
-      .then(async ({ data: { text } }) => {
-        const serialNumber = text.trim();
-        if (serialNumber.includes(" ")) {
-          const splitSerialNumber = serialNumber.split(" ").join("");
-          res.json({ serialNumber: splitSerialNumber });
-        } else {
-          res.json({ serialNumber });
-        }
-      })
-      .catch((error) => {
-        console.error("Error processing image:", error);
-        res.status(500).json({ error: "Error processing image" });
-      });
+    // const image = fs.readFileSync(req.body.image);
+    const base64Data = req.body.image.split(";base64,").pop();
+    const tempFilePath = temporaryFile({ extension: "png" });
+    await fs.writeFile(tempFilePath, Buffer.from(base64Data, "base64"));
+
+    // const grayscaleImageBuffer = await sharp(Buffer.from(base64Data, "base64"))
+    //   .resize({ width: 10 })
+    //   .grayscale()
+    //   .toBuffer();
+
+    // const grayscaleBase64Data = grayscaleImageBuffer.toString("base64");
+
+    console.log("testing: ", tempFilePath);
+
+    const config = {
+      lang: "eng",
+      oem: 1, // OCR Engine Mode: 0 to 3
+      psm: 3, // Page segmentation mode: 0 to 13
+      binary: "/usr/local/bin/tesseract",
+    };
+
+    const text = await Tesseract.recognize(tempFilePath, config);
+
+    const serialNumber = text.trim();
+
+    res.json({ serialNumber });
+
+    // await Tesseract.recognize(req.body.image, config)
+    //   .then(async ({ data: { text } }) => {
+    //     const serialNumber = text.trim();
+
+    //     console.log("testing: ", text);
+
+    //     if (serialNumber.includes(" ")) {
+    //       const splitSerialNumber = serialNumber.split(" ").join("");
+    //       res.json({ serialNumber: splitSerialNumber });
+    //     } else {
+    //       res.json({ serialNumber });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error processing image:", error);
+    //     res.status(500).json({ error: "Error processing image" });
+    //   });
   } catch (error) {
     console.log("Error: ", error);
     res.status(500).json({ error: "Internal Server Error" });
